@@ -1,0 +1,25 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #EFF1F3;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Poppins', helvetica;
+    color: #555;
+}
+
+p,a,li {
+    font-family: 'Open Sans', system;
+    color: #555;
+}
+
+img {
+    max-width: 100%;
+}
