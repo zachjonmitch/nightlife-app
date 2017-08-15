@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
 
     console.log(this.rForm)
 
-    this.dataService.authenticateUser(this.rForm.value).subscribe(
-      (data) => console.log(data)
-    );
+    this.dataService.authenticateUser(this.rForm.value)
+    
   }
 }
