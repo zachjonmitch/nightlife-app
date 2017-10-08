@@ -7,6 +7,11 @@ const config = require('../config.js');
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.status(200);
+    res.end();
+})
+
 router.post('/signup', (req, res) => {
     const email = req.body.email;
     const username = req.body.username;

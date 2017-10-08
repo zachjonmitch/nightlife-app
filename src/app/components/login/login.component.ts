@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [DataService]
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
   rForm: FormGroup;
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   notFoundAlert:string = 'This email and password combination does not match our records';
   
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private dataService: AuthService) {
 
     this.rForm = fb.group({
       'email'    : [null, Validators.required],
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     
   }
 
-  queryUser(post) {
+  authenticateUser(post) {
     this.email = post.email;
     this.password = post.password;
 
@@ -37,5 +37,9 @@ export class LoginComponent implements OnInit {
 
     this.dataService.authenticateUser(this.rForm.value)
     
+  }
+
+  logout() {
+    this.dataService.logout()
   }
 }

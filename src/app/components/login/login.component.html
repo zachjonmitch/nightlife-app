@@ -1,6 +1,6 @@
 <section id="login">
   <div class="container">
-    <form [formGroup]="rForm" (ngSubmit)="queryUser(rForm.value)">
+    <form [formGroup]="rForm" (ngSubmit)="authenticateUser(rForm.value)">
       <div class="form-group">
         <label for="inputEmail">Email address</label>
         <input type="email" formControlName="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -12,5 +12,9 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>  
   </div>
+</section>
+
+<section id="logout">
+  <button type="submit" (click)="logout()">Submit</button>
 </section>
 

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { DataService } from '../../services/data.service';
+import { UserService } from '../../services/user.service';
 import { emailValidator, matchingPasswords } from '../../_validators/validators';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [DataService]
+  providers: [UserService]
 })
 export class SignupComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
   matchAlert:string = 'Passwords do not match.';
 
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private dataService: UserService) {
 
     this.rForm = fb.group({
       'email'    : [null, Validators.compose([Validators.required, emailValidator])],
