@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  yelpAccessToken() {
-    this.yelpService.yelpAccessToken();
+  yelpSearchAPI() {
+    this.yelpService.yelpSearchAPI();
   }
 
 }

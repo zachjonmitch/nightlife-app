@@ -19,4 +19,14 @@ export class YelpService {
       console.log(test)
     })
   }
+
+  yelpSearchAPI() {
+    let headers = new Headers({});
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.get('/api/search/yelp').subscribe((testing) => {
+      console.log(testing)
+    })
+  }
+
 }

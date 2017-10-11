@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const cors = require('cors')
 
 const mongodb = require('mongodb');
 const mongoose = require('mongoose');
@@ -12,6 +13,7 @@ mongoose.Promise = bluebird;
 mongoose.connect(db);
 
 const users = require('./server/routes/users');
+const yelp = require('./server/routes/yelp');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -26,15 +28,19 @@ app.use(session({
     resave: true
 }));
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use(cors())
+
+app.options(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
     next();
 });
 
 app.use(express.static(__dirname + '/dist'));
 
 app.use('/api/users', users);
+app.use('/api/search', yelp);
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, '/dist/index.html'));
