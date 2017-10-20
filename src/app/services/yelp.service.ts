@@ -21,10 +21,10 @@ export class YelpService {
   }
 
   yelpSearchAPI() {
-    let headers = new Headers({});
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({ headers: headers });
 
-    this.http.get('/api/search/yelp').subscribe((testing) => {
+    this.http.get('/api/search/yelp', options).subscribe((testing) => {
       console.log(testing)
     })
   }

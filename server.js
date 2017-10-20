@@ -3,7 +3,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const cors = require('cors')
 
 const mongodb = require('mongodb');
 const mongoose = require('mongoose');
@@ -19,7 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(session({
@@ -27,15 +26,6 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
-
-app.use(cors())
-
-app.options(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Methods', "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    next();
-});
 
 app.use(express.static(__dirname + '/dist'));
 
