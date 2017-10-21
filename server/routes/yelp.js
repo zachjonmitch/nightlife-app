@@ -3,20 +3,19 @@ const yelp = require('yelp-fusion');
 
 const router = express.Router();
 
-router.get('/yelp', (req, res) => {
+router.post('/yelp', (req, res) => {
 
     const client = yelp.client('k7Q22BV_LCYKMqRbq-e7fXpg51OQY8LTkzZ0ZDWp2W67bIG3AeCOEPrffR9-n7omBWpQHWfzaqTGJeMcejgYBzlijKlqNVS29Zbs8vTpXgY7ZVTphaWWxqmZjiPIWXYx');
-    console.log(req.query);
+    console.log(req.body);
     client.search({
-        term:'Four Barrel Coffee',
-        location: 'san francisco, ca'
+        term:'Bars',
+        location: req.body.city
       }).then(response => {
-        /*console.log(response.jsonBody);*/
+        console.log(response.jsonBody);
+        res.status(200).send(response.jsonBody);
       }).catch(e => {
         console.log(e);
       });
-
-  res.status(200).send("Yelp search")
 })
 
 module.exports = router;
