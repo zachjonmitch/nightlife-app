@@ -7,7 +7,7 @@ const session = require('express-session');
 const mongodb = require('mongodb');
 const mongoose = require('mongoose');
 const bluebird = require('bluebird');
-const db = 'mongodb://localhost/nightlife';
+const db = 'mongodb://zjmitche:zjmitche-99@ds139352.mlab.com:39352/bar-search';
 mongoose.Promise = bluebird;
 mongoose.connect(db);
 
