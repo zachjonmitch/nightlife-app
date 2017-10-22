@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-lg-auto">
       <li class="nav-item">
-        <a class="nav-link text-uppercase text-white" href="#">Sign Up</a>
+        <a class="nav-link text-uppercase text-white" href="/signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-uppercase text-white" href="#">Login</a>
+        <a class="nav-link text-uppercase text-white" href="/login">Login</a>
       </li>
     </ul>
   </div>
@@ -31,7 +31,7 @@
           <label for="state">State</label>
           <div class="date_select">
             <select class="form-control input-small" id="state" type="state" formControlName="state">
-              <option value="NY">New York</option>
+              <option value="" disabled selected>Choose One</option>
               <option value="AK">Alaska</option>
               <option value="AL">Alabama</option>
               <option value="AR">Arkansas</option>
@@ -65,6 +65,7 @@
               <option value="NH">New Hampshire</option>
               <option value="NJ">New Jersey</option>
               <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
               <option value="NV">Nevada</option>
               <option value="OH">Ohio</option>
               <option value="OK">Oklahoma</option>
@@ -93,6 +94,24 @@
   </div>
 </header>
 
-<footer id="mastfoot">
+<div class="yelpData" *ngIf="yelpData">
+  <div class="container">
+    <div class="row">
+      <div class="yelpBusiness col-md-4" *ngFor="let business of yelpData.businesses">
+        <div class="content">
+          <div class="image">
+            <img src="{{ business.image_url }}" align="middle">
+          </div>
+          <h2 class="title">{{ business.name }}</h2>
+          <h4 class="address">{{ business.location.address1 }}</h4>
+          <h4 class="rating">Rating: {{ business.rating }}</h4> 
+          <a href="{{ business.url }}"><button class="btn">Yelp Page</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer *ngIf="!yelpData" id="mastfoot">
   <h4>Created by <a href="http://www.linkedin.com/in/zjmitche">Zach Mitchell</a> | <a href="http://www.github.com/zjmitche">View on Github</a></h4>
 </footer>
